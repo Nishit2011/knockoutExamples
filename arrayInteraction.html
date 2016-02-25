@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <h4>Users</h4>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+
+          <th>Index</th>
+          <th>Name</th>
+
+        </tr>
+
+      </thead>
+      <tbody data-bind="foreach:users">
+        <tr>
+
+          <td data-bind="text:  $index"></td>
+          <td data-bind="text:name"></td>
+          <td><a class="btn btn-danger" href="#" data-bind="click:$parent.removeUser">Remove</a></td>
+        </tr>
+
+
+      </tbody>
+
+    </table>
+
+    /*dynamically update the table*/
+
+    <input type="text" id="newUser">
+    <button class="btn btn-primary" data-bind="click:addUser">AddUser</button>
+
+  </div>
+
+  <script>
+    function viewModel() {
+      var self = this;
+
+      self.users = ko.observableArray([{
+        name: 'Virat'
+      }, {
+        name: 'Shikhar'
+      }, {
+        name: 'Dhoni'
+      }]);
+
+//to enable dynamic feature on click the button
+self.addUser = function(){
+  
+  self.users.push({name:$('#newUser').val()});
+}
+
+
+self.removeUser = function(){
+  
+  self.users.remove(this);
+}
+    }
+
+    ko.applyBindings(new viewModel()); //now we will access observable array
+  </script>
+</body>
+
+</html>

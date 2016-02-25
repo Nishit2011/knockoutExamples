@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Checked Binding</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+</head>
+
+<body>
+  <p>My Checkbox <input type="checkbox" data-bind="checked:checkIt"></p>
+  <button data-bind="click:checkIt">Check the Box</button>
+ <script>
+   var viewModel = {
+     checkIt: ko.observable(false),
+     
+   }
+   //due to above code checkbox will be checked on load below will uncheck it
+   
+   //viewModel.checkIt(false);
+   ko.applyBindings(viewModel);
+ </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Value Binding</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+</head>
+
+<body>
+  <p>Login: <input data-bind="value: username,valueUpdate:'afterkeydown'" type="text"></p>
+  <p>Password:<input  data-bind="value:userpassword" type="password"></p>
+  <p>Logging in As:<span data-bind = "text:username"></span></p>
+<script>
+  
+  var viewModel = {
+    username:ko.observable(),
+    userpassword:ko.observable()
+  }
+  ko.applyBindings(viewModel);
+</script>
+</body>
+
+</html>

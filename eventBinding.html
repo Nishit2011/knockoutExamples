@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Event Binding</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+</head>
+
+<body>
+<div data-bind="event:{mouseover:addHover, mouseout:removerHover}">
+  Hover Over Me
+  
+</div>
+<div data-bind="visible:isHover">You are now hovering </div>
+ <script>
+   var viewModel = {
+     
+     isHover:ko.observable(false),
+     addHover:function(){
+       this.isHover(true);
+       
+     },
+     removerHover:function(){
+       this.isHover(false)
+     }
+     
+   }
+   ko.applyBindings(viewModel);
+   
+ </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+  </head>
+
+  <body>
+   <h1>Welcome <span data-bind="text:firstname"></span>
+   <span data-bind="text:lastname"></span>
+     
+   
+   </h1>
+     <label>First Name:</label>
+     <input type="text" data-bind="value:firstname ,valueUpdate:'afterkeydown'">
+     <label>Last Name:</label>
+     <input type="text" data-bind="value:lastname,valueUpdate:'afterkeydown'">
+     <br/>
+     <br/>
+   <button>Change</button>
+   <script>
+     var viewModel ={
+       firstname:ko.observable("Jcvbcvoe"),
+       lastname:ko.observable("Doe")
+       
+     }
+     
+     $("button").click(function(){
+       viewModel.firstname("George");
+       viewModel.lastname("Williams");
+       
+     });
+     viewModel.firstname.subscribe(function(newValue){
+       console.log("The users firstname is now "+newValue);
+     });
+     viewModel.firstname.subscribe(function(oldValue){
+       console.log("The users previous firstname is now "+oldValue);
+     },null,"beforeChange");
+     ko.applyBindings(viewModel);
+   </script>
+  </body>
+
+</html>

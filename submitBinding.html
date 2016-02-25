@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Submit Binding</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+</head>
+
+<body>
+  <span data-bind="text:submitMessage"></span>
+  <form data-bind="submit:fireSubmit">
+    <button type="submit">Submit</button>
+  </form>
+  <script>
+  var viewModel = {
+     submitMessage:ko.observable(),
+     fireSubmit:function(){
+       
+       this.submitMessage('Form Submitted');
+     }
+  }
+  
+  ko.applyBindings(viewModel);
+  </script>
+</body>
+
+</html>
